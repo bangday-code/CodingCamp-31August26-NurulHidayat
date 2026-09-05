@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== GREETING SECTION ===== -->
+  <header class="greeting-card">
+    <div id="clock" class="clock"></div>
+    <div id="date" class="date"></div>
+    <div id="greeting" class="greeting"></div>
+  </header>
+
+  <!-- ===== MAIN GRID ===== -->
+  <main class="grid">
+
+    <!-- Focus Timer -->
+    <section class="card timer-card">
+      <h2 class="card-title">Focus Timer</h2>
+
+      <div id="timer-display" class="timer-display">25:00</div>
+
+      <!-- Custom duration input -->
+      <div class="timer-config">
+        <label for="timer-minutes">Set minutes:</label>
+        <input
+          type="number"
+          id="timer-minutes"
+          class="timer-input"
+          min="1"
+          max="120"
+          value="25"
+          placeholder="25"
+        />
+      </div>
+
+      <div class="timer-controls">
+        <button id="btn-start" class="btn btn-primary">Start</button>
+        <button id="btn-stop" class="btn btn-secondary">Stop</button>
+        <button id="btn-reset" class="btn btn-secondary">Reset</button>
+      </div>
+
+      <!-- Progress ring -->
+      <div class="progress-wrap">
+        <svg class="progress-ring" viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="52" />
+          <circle id="ring-progress" class="ring-fill" cx="60" cy="60" r="52" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- To-Do List -->
+    <section class="card todo-card">
+      <div class="card-header-row">
+        <h2 class="card-title">Tasks</h2>
+        <!-- Sort controls -->
+        <div class="sort-controls">
+          <label for="sort-select" class="sort-label">Sort:</label>
+          <select id="sort-select" class="sort-select">
+            <option value="default">Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="active">Active first</option>
+            <option value="done">Done first</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Add task row -->
+      <div class="add-task-row">
+        <input
+          type="text"
+          id="task-input"
+          class="task-input"
+          placeholder="Add a new task..."
+          maxlength="120"
+        />
+        <button id="btn-add-task" class="btn btn-primary">Add</button>
+      </div>
+
+      <!-- Task list -->
+      <ul id="task-list" class="task-list"></ul>
+
+      <!-- Footer: task count -->
+      <div id="task-footer" class="task-footer"></div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="card links-card">
+      <h2 class="card-title">Quick Links</h2>
+
+      <!-- Add link form -->
+      <div class="add-link-row">
+        <input
+          type="text"
+          id="link-name"
+          class="link-input"
+          placeholder="Link name"
+          maxlength="30"
+        />
+        <input
+          type="url"
+          id="link-url"
+          class="link-input link-url"
+          placeholder="https://..."
+          maxlength="200"
+        />
+        <button id="btn-add-link" class="btn btn-primary">Add Link</button>
+      </div>
+
+      <!-- Saved links -->
+      <div id="links-container" class="links-container"></div>
+    </section>
+
+  </main>
+
+  <!-- Edit task modal -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <h3 class="modal-title">Edit Task</h3>
+      <input type="text" id="modal-input" class="task-input" maxlength="120" />
+      <div class="modal-actions">
+        <button id="modal-save" class="btn btn-primary">Save</button>
+        <button id="modal-cancel" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
